@@ -1,0 +1,37 @@
+-- MySQL dump 10.13  Distrib 8.0.43, for Win64 (x86_64)
+--
+-- Host: mysql-eas-uat-bkwebsite-001.mysql.database.azure.com    Database: bkstrapi
+-- ------------------------------------------------------
+-- Server version	8.0.41-azure
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Dumping data for table `components_components_expand_lists_cmps`
+--
+
+LOCK TABLES `components_components_expand_lists_cmps` WRITE;
+/*!40000 ALTER TABLE `components_components_expand_lists_cmps` DISABLE KEYS */;
+INSERT INTO `components_components_expand_lists_cmps` VALUES (162,79,88,'components.list-item','ListItem',1),(226,79,121,'components.list-item','ListItem',2),(262,79,140,'components.list-item','ListItem',3),(263,79,141,'components.list-item','ListItem',4),(270,79,146,'components.list-item','ListItem',5),(435,138,227,'components.list-item','ListItem',1),(436,138,228,'components.list-item','ListItem',2),(437,138,229,'components.list-item','ListItem',3),(438,138,230,'components.list-item','ListItem',4),(439,138,231,'components.list-item','ListItem',5);
+/*!40000 ALTER TABLE `components_components_expand_lists_cmps` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2025-09-02 10:50:50
