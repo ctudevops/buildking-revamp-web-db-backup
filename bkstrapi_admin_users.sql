@@ -1,0 +1,72 @@
+-- MySQL dump 10.13  Distrib 8.0.43, for macos15 (arm64)
+--
+-- Host: gtisidebackup.mysql.database.azure.com    Database: bkstrapi
+-- ------------------------------------------------------
+-- Server version	8.0.41-azure
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `admin_users`
+--
+
+DROP TABLE IF EXISTS `admin_users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `admin_users` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `document_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `firstname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `lastname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `reset_password_token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `registration_token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `is_active` tinyint(1) DEFAULT NULL,
+  `blocked` tinyint(1) DEFAULT NULL,
+  `prefered_language` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `created_at` datetime(6) DEFAULT NULL,
+  `updated_at` datetime(6) DEFAULT NULL,
+  `published_at` datetime(6) DEFAULT NULL,
+  `created_by_id` int unsigned DEFAULT NULL,
+  `updated_by_id` int unsigned DEFAULT NULL,
+  `locale` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `admin_users_documents_idx` (`document_id`,`locale`,`published_at`),
+  KEY `admin_users_created_by_id_fk` (`created_by_id`),
+  KEY `admin_users_updated_by_id_fk` (`updated_by_id`),
+  CONSTRAINT `admin_users_created_by_id_fk` FOREIGN KEY (`created_by_id`) REFERENCES `admin_users` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `admin_users_updated_by_id_fk` FOREIGN KEY (`updated_by_id`) REFERENCES `admin_users` (`id`) ON DELETE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `admin_users`
+--
+
+LOCK TABLES `admin_users` WRITE;
+/*!40000 ALTER TABLE `admin_users` DISABLE KEYS */;
+INSERT INTO `admin_users` VALUES (1,'mm6zc4y9eg9to28vj2i2zdm5','Ivan','Chan','ivanws.chan@buildking.hk','ivanws.chan@buildking.hk','$2a$10$8YQEI.mq8ADwZJZZ9TUjQ.xRPlXgK7LBvS6XT3Z..thKPLk34iWUu',NULL,NULL,1,0,NULL,'2025-05-09 15:32:57.499000','2025-05-28 06:21:54.591000','2025-05-09 15:32:57.499000',NULL,NULL,NULL),(2,'hs5pmk6sltyv95y4pbu6j3vp','Sarah','Hung',NULL,'sarah.hung@gti.com.hk','$2a$10$PCqk5V1D2N8hkhRxyzYolO9jCvrGxjgO1pWRNvrhsO04fgdaj.hEm',NULL,'ce3970a0bc5785be902e5e5de3daf113286da5a8',1,0,NULL,'2025-05-27 09:06:59.195000','2025-05-29 07:23:10.961000','2025-05-27 09:06:59.197000',NULL,NULL,NULL),(3,'dz1mcfas5h3d30zxziqj3wke','Mike','Ng',NULL,'mike.ng@gti.com.hk','$2a$10$iImuN4gz3zl0euGKBopiK.ulfjA8IYd6GzODpf6qbXgFWIrsIGFcK',NULL,'89fd511ee3e52e03b7b75f4a5df9d1d2a4b14e73',1,0,NULL,'2025-05-27 09:19:36.725000','2025-06-25 15:54:14.923000','2025-05-27 09:19:36.726000',NULL,NULL,NULL),(4,'hwhsd2ihwdomranfyogvgc6o','Test','User',NULL,'testinguser@gti.com.hk','$2a$10$BqtNvbU1M0jgFZC4i1FIY.5lZGdBi6d9GCw1amT8wpjXU.nt9NnYm',NULL,'fdcaa9f35c5f8d273cbad9b5389b0f26a3666c9e',1,0,NULL,'2025-05-28 02:14:13.725000','2025-05-28 02:14:38.291000','2025-05-28 02:14:13.725000',NULL,NULL,NULL),(5,'g8f8o2tmp4sojoqq6yl5447q','Anson','Yuen',NULL,'anson.yuen@buildking.hk','$2a$10$b9mMRvXo/RYFc6kPDnscS.TJZsd2QODqR/gTTKNyd13EG.MpeeuJq',NULL,'76a9df24d1d29542696f0498797806654b7311c8',1,0,NULL,'2025-05-28 04:01:56.350000','2025-05-28 06:20:17.576000','2025-05-28 04:01:56.352000',NULL,NULL,NULL),(6,'l7ro0o92vhtq19b89wkng4iq','Kayton','Poon',NULL,'kayton.poon@buildking.hk','$2a$10$oE6BXS5xykwO9zEO2fb8P.d5tkNsUR1VoJ8bjAgxvg3bDHW6UqrG.',NULL,'44037ea6c3ae20d19dad92a1314a8cd6e5012ce9',1,0,NULL,'2025-05-28 06:19:51.998000','2025-06-16 06:21:40.855000','2025-05-28 06:19:51.999000',NULL,NULL,NULL),(7,'ff6iizs8r4nqzrubrbatgoe6','Tsz Shan, Judith','LEE',NULL,'judith.lee@buildking.hk','$2a$10$0f9BhJ7tjvTQ1rwizPemQ.4ILTvbvhmJEyLNdjy5qW2YqOxk5VRNq',NULL,'f3cefb40ca86c50b75947e6b73c8c3ec43df35e4',1,0,NULL,'2025-05-28 06:43:30.177000','2025-06-16 05:23:29.810000','2025-05-28 06:43:30.179000',NULL,NULL,NULL),(8,'gzvtt7eg33cuyb77nowosk7g','Leung','Ka Ka',NULL,'ka.leung@gti.com.hk','$2a$10$smvld6Acdx5RVPJCVAMKWuJs4my.lqrs4At1iBoLxPS5i0TzPW3nS',NULL,'128b4704ab0591121d0f8dc29bae281094e63590',1,0,NULL,'2025-05-29 04:18:05.701000','2025-05-29 04:50:56.298000','2025-05-29 04:18:05.702000',NULL,NULL,NULL),(9,'eu1d5ooe8tbxd9g9k71m6ge6','Keung','Pun',NULL,'keung.pun@gti.com.hk','$2a$10$RZmhuo7Si9SpyjkYVEA.9.loqUlwKxLCLo9OLy5diE7CZIZD3eY3i',NULL,'cb97772cea3d3412eb9fc43ae433044e61e0bbe1',1,0,NULL,'2025-05-29 04:25:44.300000','2025-05-29 04:51:54.173000','2025-05-29 04:25:44.301000',NULL,NULL,NULL),(10,'tdapflshl1f12yunu09df9lx','nawaz','raheem',NULL,'nawaz.raheem@gti.com.hk','$2a$10$zbBERyFBvetnqfPWnLg9FeRHdYg9NE42k58ScjoCuDMNcl1wQrivS',NULL,'97db0f465a286b4b97d0b49fe0ed1a701e5254af',1,0,NULL,'2025-05-29 04:26:30.696000','2025-05-29 04:51:44.800000','2025-05-29 04:26:30.697000',NULL,NULL,NULL),(11,'h2h02exuecy2fdio1no22ez9','Jacky','Lai',NULL,'tk.lai@gti.com.hk','$2a$10$RGTwnpWcDm4CFb7komEKw.T.egrTGtK1ZC3X67ixkPRiG7ogcdesO',NULL,'c59b1716a76f24f982082f5dad3e539dfdeb6517',1,0,NULL,'2025-05-29 04:39:35.826000','2025-05-29 04:52:01.463000','2025-05-29 04:39:35.827000',NULL,NULL,NULL),(12,'hjwujj30r0jqov9etyo3bu62','Michele','Lai',NULL,'michele.lai@gti.com.hk','$2a$10$ZdEtkQydbjBZe3C/6kxyKuEXrCNUlQIopV9lRXPpFKHwADJQN9Wju',NULL,'b42d0eba4b52ac7629c8be096063dfad900a12a2',1,0,NULL,'2025-05-29 04:40:24.971000','2025-05-29 04:51:35.310000','2025-05-29 04:40:24.972000',NULL,NULL,NULL),(13,'aapon479anec83pswb3us8ru','Joe','Ho',NULL,'joe.ho@gti.com.hk','$2a$10$Cvdo763JNppzZTEjyqGZpOC5Rz.W2XVWirGLuR.Q88teRVQXOjCoS','1e10b60787e3025913f1d1133d000e86db474591','a831e1e84bbe384bd0b970588f24f9d89eb275a9',1,0,NULL,'2025-05-29 04:41:10.189000','2025-06-25 06:43:55.032000','2025-05-29 04:41:10.190000',NULL,NULL,NULL),(14,'mve9p00ec2900f6dthacvvuy','Peter','Liu',NULL,'peter.liu@gti.com.hk','$2a$10$hhsaPO3Yddw97BUSzCFv9.8qPhb2e2/MHa1Bzs2vAZXNk3LP/w.uq',NULL,'3ebaef4a78121c24b733902673e41ef5caff277f',1,0,NULL,'2025-05-29 11:03:41.702000','2025-05-29 11:07:21.761000','2025-05-29 11:03:41.703000',NULL,NULL,NULL),(15,'anhzlal2rnamgo6gn8yescvi','WK','wong',NULL,'wk.wong@gti.com.hk','$2a$10$1c9ZbSy0mRLB6aDEt00wXe0coCDqgubqp6ctgML8A2dpKqSNvrmjG',NULL,'072145461385aaf58ed7f20f76823caaf9dd4510',1,0,NULL,'2025-06-02 05:47:44.866000','2025-06-02 05:48:05.493000','2025-06-02 05:47:44.867000',NULL,NULL,NULL),(16,'oivrsrf6z9ba9mdyzd7fgocx','Dazi','Cremonita',NULL,'dazi.cremonita@gti.com.hk','$2a$10$CtGFhILtvhZe5cwvOffgSOVnKB0Ly9wiPKyGWBr.3.oeP5d3z3dkO',NULL,'41ac7c967a1f2a662fa1524b5c7b70739d079737',1,0,NULL,'2025-06-06 07:59:15.318000','2025-06-06 08:00:05.018000','2025-06-06 07:59:15.320000',NULL,NULL,NULL),(17,'ogx9s73ar7ly2mdubvkbzjn7','test','user',NULL,'testuser@gti.com.hk','$2a$10$ZKZ//IRySr.S961zCNvAa.W/4RSMMuIlEooSKFQQMA2/VTrHdYWNm',NULL,'fe0df0d5aabe245da91ec05d733aba5c2d2f04a8',1,0,NULL,'2025-06-10 02:53:09.046000','2025-06-10 02:54:21.510000','2025-06-10 02:53:09.047000',NULL,NULL,NULL),(18,'h8hbzsdnywuske2suogrvo8e','User','Test',NULL,'testuser03@test.com','$2a$10$lA5Ew6oU4gPoxFpjg8WjZubswzEhMHPwgHqLxnD8v0zfbZJuxq71m',NULL,'e76aaee645ae646f512f22a57ea021779455dd78',1,0,NULL,'2025-06-10 06:53:34.669000','2025-06-10 06:54:19.564000','2025-06-10 06:53:34.670000',NULL,NULL,NULL),(19,'joe50e0s47h3owec6sc8g3wh','Autor','user',NULL,'autoruser@gti.com.hk','$2a$10$7ngH5AEu3fHbGzbdIdw7NenaJc/HLenZAo2eziaZaaZVKnGrdSeWO',NULL,'b245e7fb766de645ddea51f42f264d86834ef6e0',1,0,NULL,'2025-06-10 07:56:25.537000','2025-06-10 07:56:46.434000','2025-06-10 07:56:25.538000',NULL,NULL,NULL),(20,'bm479ajta4kcn4pdy2e2o3xu','Hilary','wong',NULL,'hilary.wong@gti.com.hk','$2a$10$g.yMviGLGCb.zbZ0rmzuauyf5r0y85kgfcuazD8H8OSc6fw0Z0h8G',NULL,'9d0c636c4d7581cb3b16fed44563515e57575e64',1,0,NULL,'2025-06-13 08:58:21.794000','2025-06-13 08:58:39.334000','2025-06-13 08:58:21.795000',NULL,NULL,NULL),(21,'u83r0u6f2dsoqycvj5ylg7p8','Kevin','Tsang',NULL,'kevin.tsang@gti.com.hk','$2a$10$5maZPPJXNovhU0Thi0gCoeIk5BdLAPePjrctU7.FWtKvmiovtEehq',NULL,'e6e32fb9c4630be4d33d2a3d59d0d11cbb093f60',1,0,NULL,'2025-06-13 09:03:03.096000','2025-06-13 09:03:18.273000','2025-06-13 09:03:03.096000',NULL,NULL,NULL),(22,'tbeiry444tc0jjmurwt0kr0e','Jackie','Chung',NULL,'jackie.chung@buildking.hk','$2a$10$h.9Qpwv9MPrP.30Wl5tJ2.8Bk.bb/lG3xFLo7cnqeXPzTfxzh.KxK',NULL,'e90e45cf06d8af6009b0a0a38e893a9e332f2d4e',1,0,NULL,'2025-06-16 05:39:11.676000','2025-06-16 05:39:37.639000','2025-06-16 05:39:11.684000',NULL,NULL,NULL),(23,'wrf0qch5uiji9xrb4yrmg6qm','Yannes','Chan',NULL,'yannes.chan@buildking.hk','$2a$10$Dsfi22eFbr69VB5XD1oMOu6BsWxzVpkQ7kYkR/DH9qMAvlvfi74ni',NULL,'c0f5fabcb654bc82a25c70ec1e86b3a715de5e9e',1,0,NULL,'2025-06-16 05:40:59.419000','2025-06-16 05:41:30.796000','2025-06-16 05:40:59.419000',NULL,NULL,NULL),(24,'ssat7mmmj174ahz8ftnfwwzz','Kate','Leung',NULL,'kate.leung@buildking.hk','$2a$10$WbJ7du5PwzcsMbnR8E//NuzgoT/IEm3i4IMPq.gemr7nxNaBYQZxi',NULL,'b8a41d3b920baae45dfc5a62403633d2ca11da89',1,0,NULL,'2025-06-16 05:42:00.816000','2025-06-16 05:42:29.673000','2025-06-16 05:42:00.816000',NULL,NULL,NULL),(27,'ivf722bsubfcm94casahktfh','Mike','Ng',NULL,'komike0404@gmail.com',NULL,NULL,'c33bc816bab790b4903ae7c11893cd2d32aad752',0,0,NULL,'2025-06-16 05:55:14.976000','2025-06-16 05:55:14.976000','2025-06-16 05:55:14.977000',NULL,NULL,NULL),(28,'n00q3rbc8g2rp46dp2yrd5yl','test','1',NULL,'test1@gti.com.hk','$2a$10$RojYyLJ1wdmNyzyYrS7/se3Km2OmCmra.hnT5BFyEI5sHRn2oY98e',NULL,'226b210eecbf63b545b8d4145a90fa0eca040ccb',1,0,NULL,'2025-06-16 07:04:21.259000','2025-06-16 07:04:47.583000','2025-06-16 07:04:21.260000',NULL,NULL,NULL),(29,'a15agyw8jhzfkg5pu3vzw51j','Jessica','Leung',NULL,'jessica.leung@buildking.hk','$2a$10$lBBMl0uCL8a1rXYypYl5g./IHuKga/hPi9k84Sp4X3wXSRgSCQuXe',NULL,NULL,1,0,NULL,'2025-06-16 07:30:11.357000','2025-06-16 07:38:19.984000','2025-06-16 07:30:11.358000',NULL,NULL,NULL),(30,'lw0t0duyuq3i6yzsoauoww9o','Molly','Chu',NULL,'molly.chu@buildking.hk','$2a$10$2nNzAmr7Ohg8qTRTobK2BucmnWn9h/750g/9oXPx/uX0V.PFKXi6C',NULL,'fc3c8f7ff8e7f627689be46649f48d8cd7a335c3',1,0,NULL,'2025-06-16 07:56:08.972000','2025-06-16 07:57:34.481000','2025-06-16 07:56:08.972000',NULL,NULL,NULL),(31,'u0b1fngnmtbsoegeu0if8zu4','Ryan','Pang',NULL,'ryan.pang@gti.com.hk','$2a$10$ofuD1L4ogEgr.fHHooNqV.rt2aCL5nZnNKs1ZuBLO/mPbBMaQHRAW',NULL,NULL,1,0,NULL,'2025-06-18 06:56:57.482000','2025-06-18 06:57:42.179000','2025-06-18 06:56:57.483000',NULL,NULL,NULL),(32,'z1r2mbdhdk73okcv67o4mndl','kit','',NULL,'kit@gti.com.hk','$2a$10$O3TPMbkvfbnPXTlNpqhSQOXmJEErUOlNeA7z4to1mtvCh50ZBGokW','be293bad56313fb71d16060e9214b92bca115421','5604869700fa36e31b5001ef6b2dcb73d9fd0847',1,0,NULL,'2025-06-20 03:24:14.680000','2025-06-23 14:51:44.968000','2025-06-20 03:24:14.682000',NULL,NULL,NULL),(33,'a9wmu3k30zjb7148v6ki3di2','Karl','Li',NULL,'karl.li@gti.com.hk','$2a$10$n/fGde9T/jr0VfOPy8Y5.e8dah22ZO9QIEODUHehfKbr3kZDttk4i',NULL,'61c5466e9090926500194e1953f5e6a32b4dcb45',1,0,NULL,'2025-06-26 02:45:24.129000','2025-06-26 02:45:52.630000','2025-06-26 02:45:24.131000',NULL,NULL,NULL),(34,'amarm3m1hswqcrbglsqgr7ab','Alex','Au',NULL,'alex.auyeung@gti.com.hk','$2a$10$X8SAzO4lEg0C.s4a4MycI.ku2t.fncGu2e0GHiCa7uyUMZf21MHT.',NULL,'cf32e735eeeb48e88d7e96735a29e432599c76f2',1,0,NULL,'2025-06-27 06:23:53.062000','2025-06-27 06:24:41.449000','2025-06-27 06:23:53.063000',NULL,NULL,NULL),(35,'zvlp2gfwk0k8d009blx3v1rr','Randy','Pang',NULL,'randy.pang@gti.com.hk','$2a$10$DkoLWnEPv8FYL2kpvW6DnebRsjGZlqLMgM1P1Q4CPH7MdRiggLqim',NULL,'9331419581470c4d46d8d38c40445e2c8a56aa28',1,0,NULL,'2025-06-27 06:24:20.746000','2025-06-27 06:27:24.967000','2025-06-27 06:24:20.746000',NULL,NULL,NULL),(36,'uvcek5sr8scbnmvjte7rmjky','Karl','Chan',NULL,'ch.chan@gti.com.hk','$2a$10$ECOnpvOzmQBaFb5Niw8/7eXHXTZFXz4Y6f2eZemNoXqZHxWC19EWe',NULL,'42296f8bbba29c87f12a045aef5d91195ebdfa15',1,0,NULL,'2025-06-30 01:21:21.001000','2025-06-30 01:21:35.098000','2025-06-30 01:21:21.002000',NULL,NULL,NULL);
+/*!40000 ALTER TABLE `admin_users` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2025-09-01 20:20:03
