@@ -16,6 +16,26 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `about_uses_localizations_links`
+--
+
+DROP TABLE IF EXISTS `about_uses_localizations_links`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `about_uses_localizations_links` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `about_us_id` int unsigned DEFAULT NULL,
+  `inv_about_us_id` int unsigned DEFAULT NULL,
+  `about_us_order` double unsigned DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `about_uses_localizations_links_unique` (`about_us_id`,`inv_about_us_id`),
+  KEY `about_uses_localizations_links_fk` (`about_us_id`),
+  KEY `about_uses_localizations_links_inv_fk` (`inv_about_us_id`),
+  KEY `about_uses_localizations_links_order_fk` (`about_us_order`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Dumping data for table `about_uses_localizations_links`
 --
 
@@ -33,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-09-02 11:43:01
+-- Dump completed on 2025-09-02 11:48:21

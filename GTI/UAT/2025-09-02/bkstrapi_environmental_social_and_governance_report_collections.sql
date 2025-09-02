@@ -16,6 +16,33 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `environmental_social_and_governance_report_collections`
+--
+
+DROP TABLE IF EXISTS `environmental_social_and_governance_report_collections`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `environmental_social_and_governance_report_collections` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `document_id` varchar(255) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `created_at` datetime(6) DEFAULT NULL,
+  `updated_at` datetime(6) DEFAULT NULL,
+  `published_at` datetime(6) DEFAULT NULL,
+  `created_by_id` int unsigned DEFAULT NULL,
+  `updated_by_id` int unsigned DEFAULT NULL,
+  `locale` varchar(255) DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `environmental_social_and_governance_b1f57_documents_idx` (`document_id`,`locale`,`published_at`),
+  KEY `environmental_social_and_governanb1f57_created_by_id_fk` (`created_by_id`),
+  KEY `environmental_social_and_governanb1f57_updated_by_id_fk` (`updated_by_id`),
+  CONSTRAINT `environmental_social_and_governanb1f57_created_by_id_fk` FOREIGN KEY (`created_by_id`) REFERENCES `admin_users` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `environmental_social_and_governanb1f57_updated_by_id_fk` FOREIGN KEY (`updated_by_id`) REFERENCES `admin_users` (`id`) ON DELETE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=96 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Dumping data for table `environmental_social_and_governance_report_collections`
 --
 
@@ -34,4 +61,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-09-02 11:43:15
+-- Dump completed on 2025-09-02 11:48:37

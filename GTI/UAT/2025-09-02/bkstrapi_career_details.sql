@@ -16,6 +16,33 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `career_details`
+--
+
+DROP TABLE IF EXISTS `career_details`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `career_details` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `document_id` varchar(255) DEFAULT NULL,
+  `page_title` varchar(255) DEFAULT NULL,
+  `created_at` datetime(6) DEFAULT NULL,
+  `updated_at` datetime(6) DEFAULT NULL,
+  `published_at` datetime(6) DEFAULT NULL,
+  `created_by_id` int unsigned DEFAULT NULL,
+  `updated_by_id` int unsigned DEFAULT NULL,
+  `locale` varchar(255) DEFAULT NULL,
+  `detail_new_text_editor` longtext,
+  PRIMARY KEY (`id`),
+  KEY `career_details_documents_idx` (`document_id`,`locale`,`published_at`),
+  KEY `career_details_created_by_id_fk` (`created_by_id`),
+  KEY `career_details_updated_by_id_fk` (`updated_by_id`),
+  CONSTRAINT `career_details_created_by_id_fk` FOREIGN KEY (`created_by_id`) REFERENCES `admin_users` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `career_details_updated_by_id_fk` FOREIGN KEY (`updated_by_id`) REFERENCES `admin_users` (`id`) ON DELETE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Dumping data for table `career_details`
 --
 
@@ -34,4 +61,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-09-02 11:43:19
+-- Dump completed on 2025-09-02 11:48:42

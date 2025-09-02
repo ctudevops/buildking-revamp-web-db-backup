@@ -16,6 +16,37 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `general_marine_works_collecitons`
+--
+
+DROP TABLE IF EXISTS `general_marine_works_collecitons`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `general_marine_works_collecitons` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `document_id` varchar(255) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `project_name` longtext,
+  `client` varchar(255) DEFAULT NULL,
+  `contract_period` varchar(255) DEFAULT NULL,
+  `project_summary` longtext,
+  `created_at` datetime(6) DEFAULT NULL,
+  `updated_at` datetime(6) DEFAULT NULL,
+  `published_at` datetime(6) DEFAULT NULL,
+  `created_by_id` int unsigned DEFAULT NULL,
+  `updated_by_id` int unsigned DEFAULT NULL,
+  `locale` varchar(255) DEFAULT NULL,
+  `order` decimal(10,2) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `general_marine_works_collecitons_documents_idx` (`document_id`,`locale`,`published_at`),
+  KEY `general_marine_works_collecitons_created_by_id_fk` (`created_by_id`),
+  KEY `general_marine_works_collecitons_updated_by_id_fk` (`updated_by_id`),
+  CONSTRAINT `general_marine_works_collecitons_created_by_id_fk` FOREIGN KEY (`created_by_id`) REFERENCES `admin_users` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `general_marine_works_collecitons_updated_by_id_fk` FOREIGN KEY (`updated_by_id`) REFERENCES `admin_users` (`id`) ON DELETE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=378 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Dumping data for table `general_marine_works_collecitons`
 --
 
@@ -34,4 +65,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-09-02 11:43:05
+-- Dump completed on 2025-09-02 11:48:26

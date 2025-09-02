@@ -16,6 +16,36 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `upload_folders`
+--
+
+DROP TABLE IF EXISTS `upload_folders`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `upload_folders` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `document_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `path_id` int DEFAULT NULL,
+  `path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `created_at` datetime(6) DEFAULT NULL,
+  `updated_at` datetime(6) DEFAULT NULL,
+  `published_at` datetime(6) DEFAULT NULL,
+  `created_by_id` int unsigned DEFAULT NULL,
+  `updated_by_id` int unsigned DEFAULT NULL,
+  `locale` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `upload_folders_path_id_index` (`path_id`),
+  UNIQUE KEY `upload_folders_path_index` (`path`),
+  KEY `upload_folders_documents_idx` (`document_id`,`locale`,`published_at`),
+  KEY `upload_folders_created_by_id_fk` (`created_by_id`),
+  KEY `upload_folders_updated_by_id_fk` (`updated_by_id`),
+  CONSTRAINT `upload_folders_created_by_id_fk` FOREIGN KEY (`created_by_id`) REFERENCES `admin_users` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `upload_folders_updated_by_id_fk` FOREIGN KEY (`updated_by_id`) REFERENCES `admin_users` (`id`) ON DELETE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Dumping data for table `upload_folders`
 --
 
@@ -34,4 +64,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-09-02 11:43:18
+-- Dump completed on 2025-09-02 11:48:40

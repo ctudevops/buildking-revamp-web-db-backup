@@ -16,6 +16,54 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `files`
+--
+
+DROP TABLE IF EXISTS `files`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `files` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `document_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `alternative_text` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `caption` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `width` int DEFAULT NULL,
+  `height` int DEFAULT NULL,
+  `formats` json DEFAULT NULL,
+  `hash` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `ext` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `mime` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `size` decimal(10,2) DEFAULT NULL,
+  `url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `preview_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `provider` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `provider_metadata` json DEFAULT NULL,
+  `folder_path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `created_at` datetime(6) DEFAULT NULL,
+  `updated_at` datetime(6) DEFAULT NULL,
+  `published_at` datetime(6) DEFAULT NULL,
+  `created_by_id` int unsigned DEFAULT NULL,
+  `updated_by_id` int unsigned DEFAULT NULL,
+  `locale` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `upload_files_folder_path_index` (`folder_path`),
+  KEY `upload_files_created_at_index` (`created_at`),
+  KEY `upload_files_updated_at_index` (`updated_at`),
+  KEY `upload_files_name_index` (`name`),
+  KEY `upload_files_size_index` (`size`),
+  KEY `upload_files_ext_index` (`ext`),
+  KEY `files_documents_idx` (`document_id`,`locale`,`published_at`),
+  KEY `files_created_by_id_fk` (`created_by_id`),
+  KEY `files_updated_by_id_fk` (`updated_by_id`),
+  CONSTRAINT `files_created_by_id_fk` FOREIGN KEY (`created_by_id`) REFERENCES `admin_users` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `files_updated_by_id_fk` FOREIGN KEY (`updated_by_id`) REFERENCES `admin_users` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `files_chk_1` CHECK (json_valid(`formats`)),
+  CONSTRAINT `files_chk_2` CHECK (json_valid(`provider_metadata`))
+) ENGINE=InnoDB AUTO_INCREMENT=5261 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Dumping data for table `files`
 --
 
@@ -36,4 +84,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-09-02 11:42:58
+-- Dump completed on 2025-09-02 11:48:18

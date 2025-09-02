@@ -16,6 +16,28 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `strapi_api_token_permissions_token_lnk`
+--
+
+DROP TABLE IF EXISTS `strapi_api_token_permissions_token_lnk`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `strapi_api_token_permissions_token_lnk` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `api_token_permission_id` int unsigned DEFAULT NULL,
+  `api_token_id` int unsigned DEFAULT NULL,
+  `api_token_permission_ord` double unsigned DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `strapi_api_token_permissions_token_lnk_uq` (`api_token_permission_id`,`api_token_id`),
+  KEY `strapi_api_token_permissions_token_lnk_fk` (`api_token_permission_id`),
+  KEY `strapi_api_token_permissions_token_lnk_ifk` (`api_token_id`),
+  KEY `strapi_api_token_permissions_token_lnk_oifk` (`api_token_permission_ord`),
+  CONSTRAINT `strapi_api_token_permissions_token_lnk_fk` FOREIGN KEY (`api_token_permission_id`) REFERENCES `strapi_api_token_permissions` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `strapi_api_token_permissions_token_lnk_ifk` FOREIGN KEY (`api_token_id`) REFERENCES `strapi_api_tokens` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Dumping data for table `strapi_api_token_permissions_token_lnk`
 --
 
@@ -33,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-09-02 11:42:58
+-- Dump completed on 2025-09-02 11:48:18

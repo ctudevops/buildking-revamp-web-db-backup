@@ -1,7 +1,7 @@
 1. Create New DB
 ```
-CREATE DATABASE `bkstrapi-2`;
-USE `bkstrapi-2`;
+CREATE DATABASE `ver2-bkstrapi`;
+USE `ver2-bkstrapi`;
 ```
 2. Concat all files
 ```

@@ -16,6 +16,28 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `homes_message_icon_areas_lnk`
+--
+
+DROP TABLE IF EXISTS `homes_message_icon_areas_lnk`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `homes_message_icon_areas_lnk` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `home_id` int unsigned DEFAULT NULL,
+  `message_icon_area_id` int unsigned DEFAULT NULL,
+  `message_icon_area_ord` double unsigned DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `homes_message_icon_areas_lnk_uq` (`home_id`,`message_icon_area_id`),
+  KEY `homes_message_icon_areas_lnk_fk` (`home_id`),
+  KEY `homes_message_icon_areas_lnk_ifk` (`message_icon_area_id`),
+  KEY `homes_message_icon_areas_lnk_ofk` (`message_icon_area_ord`),
+  CONSTRAINT `homes_message_icon_areas_lnk_fk` FOREIGN KEY (`home_id`) REFERENCES `homes` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `homes_message_icon_areas_lnk_ifk` FOREIGN KEY (`message_icon_area_id`) REFERENCES `message_icon_areas` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Dumping data for table `homes_message_icon_areas_lnk`
 --
 
@@ -33,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-09-02 11:43:17
+-- Dump completed on 2025-09-02 11:48:39

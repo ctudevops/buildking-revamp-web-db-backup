@@ -16,6 +16,29 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `corporate_newsletters_cmps`
+--
+
+DROP TABLE IF EXISTS `corporate_newsletters_cmps`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `corporate_newsletters_cmps` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `entity_id` int unsigned DEFAULT NULL,
+  `cmp_id` int unsigned DEFAULT NULL,
+  `component_type` varchar(255) DEFAULT NULL,
+  `field` varchar(255) DEFAULT NULL,
+  `order` double unsigned DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `corporate_newsletters_uq` (`entity_id`,`cmp_id`,`field`,`component_type`),
+  KEY `corporate_newsletters_field_idx` (`field`),
+  KEY `corporate_newsletters_component_type_idx` (`component_type`),
+  KEY `corporate_newsletters_entity_fk` (`entity_id`),
+  CONSTRAINT `corporate_newsletters_entity_fk` FOREIGN KEY (`entity_id`) REFERENCES `corporate_newsletters` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=847 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Dumping data for table `corporate_newsletters_cmps`
 --
 
@@ -34,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-09-02 11:43:18
+-- Dump completed on 2025-09-02 11:48:40

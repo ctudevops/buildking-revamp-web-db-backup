@@ -16,6 +16,23 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `strapi_database_schema`
+--
+
+DROP TABLE IF EXISTS `strapi_database_schema`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `strapi_database_schema` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `schema` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `time` datetime DEFAULT NULL,
+  `hash` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `strapi_database_schema_chk_1` CHECK (json_valid(`schema`))
+) ENGINE=InnoDB AUTO_INCREMENT=1007 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Dumping data for table `strapi_database_schema`
 --
 
@@ -34,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-09-02 11:43:10
+-- Dump completed on 2025-09-02 11:48:32

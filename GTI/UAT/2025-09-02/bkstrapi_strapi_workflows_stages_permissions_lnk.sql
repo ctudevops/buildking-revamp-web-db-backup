@@ -16,6 +16,28 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `strapi_workflows_stages_permissions_lnk`
+--
+
+DROP TABLE IF EXISTS `strapi_workflows_stages_permissions_lnk`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `strapi_workflows_stages_permissions_lnk` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `workflow_stage_id` int unsigned DEFAULT NULL,
+  `permission_id` int unsigned DEFAULT NULL,
+  `permission_ord` double unsigned DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `strapi_workflows_stages_permissions_lnk_uq` (`workflow_stage_id`,`permission_id`),
+  KEY `strapi_workflows_stages_permissions_lnk_fk` (`workflow_stage_id`),
+  KEY `strapi_workflows_stages_permissions_lnk_ifk` (`permission_id`),
+  KEY `strapi_workflows_stages_permissions_lnk_ofk` (`permission_ord`),
+  CONSTRAINT `strapi_workflows_stages_permissions_lnk_fk` FOREIGN KEY (`workflow_stage_id`) REFERENCES `strapi_workflows_stages` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `strapi_workflows_stages_permissions_lnk_ifk` FOREIGN KEY (`permission_id`) REFERENCES `admin_permissions` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Dumping data for table `strapi_workflows_stages_permissions_lnk`
 --
 
@@ -33,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-09-02 11:43:16
+-- Dump completed on 2025-09-02 11:48:39

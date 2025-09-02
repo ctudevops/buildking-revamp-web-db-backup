@@ -16,6 +16,28 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `up_permissions_role_lnk`
+--
+
+DROP TABLE IF EXISTS `up_permissions_role_lnk`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `up_permissions_role_lnk` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `permission_id` int unsigned DEFAULT NULL,
+  `role_id` int unsigned DEFAULT NULL,
+  `permission_ord` double unsigned DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `up_permissions_role_lnk_uq` (`permission_id`,`role_id`),
+  KEY `up_permissions_role_lnk_fk` (`permission_id`),
+  KEY `up_permissions_role_lnk_ifk` (`role_id`),
+  KEY `up_permissions_role_lnk_oifk` (`permission_ord`),
+  CONSTRAINT `up_permissions_role_lnk_fk` FOREIGN KEY (`permission_id`) REFERENCES `up_permissions` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `up_permissions_role_lnk_ifk` FOREIGN KEY (`role_id`) REFERENCES `up_roles` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=172 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Dumping data for table `up_permissions_role_lnk`
 --
 
@@ -34,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-09-02 11:43:12
+-- Dump completed on 2025-09-02 11:48:34

@@ -16,6 +16,35 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `job_opportunities`
+--
+
+DROP TABLE IF EXISTS `job_opportunities`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `job_opportunities` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `document_id` varchar(255) DEFAULT NULL,
+  `page_title` varchar(255) DEFAULT NULL,
+  `message_red_area` json DEFAULT NULL,
+  `message_black_area` json DEFAULT NULL,
+  `detail` longtext,
+  `created_at` datetime(6) DEFAULT NULL,
+  `updated_at` datetime(6) DEFAULT NULL,
+  `published_at` datetime(6) DEFAULT NULL,
+  `created_by_id` int unsigned DEFAULT NULL,
+  `updated_by_id` int unsigned DEFAULT NULL,
+  `locale` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `job_opportunities_documents_idx` (`document_id`,`locale`,`published_at`),
+  KEY `job_opportunities_created_by_id_fk` (`created_by_id`),
+  KEY `job_opportunities_updated_by_id_fk` (`updated_by_id`),
+  CONSTRAINT `job_opportunities_created_by_id_fk` FOREIGN KEY (`created_by_id`) REFERENCES `admin_users` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `job_opportunities_updated_by_id_fk` FOREIGN KEY (`updated_by_id`) REFERENCES `admin_users` (`id`) ON DELETE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Dumping data for table `job_opportunities`
 --
 
@@ -34,4 +63,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-09-02 11:43:07
+-- Dump completed on 2025-09-02 11:48:27

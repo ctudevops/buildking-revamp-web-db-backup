@@ -16,6 +16,28 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `files_folder_lnk`
+--
+
+DROP TABLE IF EXISTS `files_folder_lnk`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `files_folder_lnk` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `file_id` int unsigned DEFAULT NULL,
+  `folder_id` int unsigned DEFAULT NULL,
+  `file_ord` double unsigned DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `files_folder_lnk_uq` (`file_id`,`folder_id`),
+  KEY `files_folder_lnk_fk` (`file_id`),
+  KEY `files_folder_lnk_ifk` (`folder_id`),
+  KEY `files_folder_lnk_oifk` (`file_ord`),
+  CONSTRAINT `files_folder_lnk_fk` FOREIGN KEY (`file_id`) REFERENCES `files` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `files_folder_lnk_ifk` FOREIGN KEY (`folder_id`) REFERENCES `upload_folders` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=2108 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Dumping data for table `files_folder_lnk`
 --
 
@@ -34,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-09-02 11:43:20
+-- Dump completed on 2025-09-02 11:48:42

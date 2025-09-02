@@ -16,6 +16,28 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `strapi_release_actions_release_lnk`
+--
+
+DROP TABLE IF EXISTS `strapi_release_actions_release_lnk`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `strapi_release_actions_release_lnk` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `release_action_id` int unsigned DEFAULT NULL,
+  `release_id` int unsigned DEFAULT NULL,
+  `release_action_ord` double unsigned DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `strapi_release_actions_release_lnk_uq` (`release_action_id`,`release_id`),
+  KEY `strapi_release_actions_release_lnk_fk` (`release_action_id`),
+  KEY `strapi_release_actions_release_lnk_ifk` (`release_id`),
+  KEY `strapi_release_actions_release_lnk_oifk` (`release_action_ord`),
+  CONSTRAINT `strapi_release_actions_release_lnk_fk` FOREIGN KEY (`release_action_id`) REFERENCES `strapi_release_actions` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `strapi_release_actions_release_lnk_ifk` FOREIGN KEY (`release_id`) REFERENCES `strapi_releases` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Dumping data for table `strapi_release_actions_release_lnk`
 --
 
@@ -33,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-09-02 11:43:02
+-- Dump completed on 2025-09-02 11:48:22

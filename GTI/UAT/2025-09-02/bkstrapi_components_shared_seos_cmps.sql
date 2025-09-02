@@ -16,6 +16,29 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `components_shared_seos_cmps`
+--
+
+DROP TABLE IF EXISTS `components_shared_seos_cmps`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `components_shared_seos_cmps` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `entity_id` int unsigned DEFAULT NULL,
+  `cmp_id` int unsigned DEFAULT NULL,
+  `component_type` varchar(255) DEFAULT NULL,
+  `field` varchar(255) DEFAULT NULL,
+  `order` double unsigned DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `components_shared_seos_uq` (`entity_id`,`cmp_id`,`field`,`component_type`),
+  KEY `components_shared_seos_field_idx` (`field`),
+  KEY `components_shared_seos_component_type_idx` (`component_type`),
+  KEY `components_shared_seos_entity_fk` (`entity_id`),
+  CONSTRAINT `components_shared_seos_entity_fk` FOREIGN KEY (`entity_id`) REFERENCES `components_shared_seos` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Dumping data for table `components_shared_seos_cmps`
 --
 
@@ -33,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-09-02 11:43:00
+-- Dump completed on 2025-09-02 11:48:20

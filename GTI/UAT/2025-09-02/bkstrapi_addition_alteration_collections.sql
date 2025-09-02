@@ -16,6 +16,32 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `addition_alteration_collections`
+--
+
+DROP TABLE IF EXISTS `addition_alteration_collections`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `addition_alteration_collections` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) DEFAULT NULL,
+  `project_name` longtext,
+  `client` varchar(255) DEFAULT NULL,
+  `contract_period` varchar(255) DEFAULT NULL,
+  `project_summary` json DEFAULT NULL,
+  `created_at` datetime(6) DEFAULT NULL,
+  `updated_at` datetime(6) DEFAULT NULL,
+  `published_at` datetime(6) DEFAULT NULL,
+  `created_by_id` int unsigned DEFAULT NULL,
+  `updated_by_id` int unsigned DEFAULT NULL,
+  `locale` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `addition_alteration_collections_created_by_id_fk` (`created_by_id`),
+  KEY `addition_alteration_collections_updated_by_id_fk` (`updated_by_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Dumping data for table `addition_alteration_collections`
 --
 
@@ -33,4 +59,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-09-02 11:43:18
+-- Dump completed on 2025-09-02 11:48:41

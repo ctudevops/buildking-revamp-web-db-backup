@@ -16,6 +16,27 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `files_related_morphs`
+--
+
+DROP TABLE IF EXISTS `files_related_morphs`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `files_related_morphs` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `file_id` int unsigned DEFAULT NULL,
+  `related_id` int unsigned DEFAULT NULL,
+  `related_type` varchar(255) DEFAULT NULL,
+  `field` varchar(255) DEFAULT NULL,
+  `order` double unsigned DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `files_related_morphs_fk` (`file_id`),
+  KEY `files_related_morphs_order_index` (`order`),
+  KEY `files_related_morphs_id_column_index` (`related_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Dumping data for table `files_related_morphs`
 --
 
@@ -33,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-09-02 11:43:14
+-- Dump completed on 2025-09-02 11:48:36
